@@ -1,0 +1,28 @@
+version: '2'
+services:
+  api1:
+    image: loanservice-api:1.0.0
+    container_name: loanservice-api1
+    networks:
+      - loanservice-net
+  api2:
+    image: loanservice-api:1.0.0
+    container_name: loanservice-api2
+    networks:
+      - loanservice-net
+  api3:
+    image: loanservice-api:1.0.0
+    container_name: loanservice-api3
+    networks:
+      - loanservice-net
+  nginx:
+    image: loanservice-nginx:1.0.0
+    container_name: loanservice-nginx
+    ports:
+      - "8091:8091"
+    networks:
+      - loanservice-net
+
+networks:
+  loanservice-net:
+    external: true
